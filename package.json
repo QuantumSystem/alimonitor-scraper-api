@@ -7,11 +7,9 @@
         "start": "node index.js"
     },
     "dependencies": {
+        "aliexpress-product-scraper": "^3.0.0",
         "express": "^4.19.2",
-        "cors": "^2.8.5",
-        "puppeteer": "^23.0.0",
-        "puppeteer-extra": "^3.3.6",
-        "puppeteer-extra-plugin-stealth": "^2.11.2"
+        "cors": "^2.8.5"
     },
     "engines": {
         "node": ">=20.0.0"
