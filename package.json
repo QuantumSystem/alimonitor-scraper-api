@@ -1,15 +1,17 @@
 {
     "name": "alimonitor-scraper-api",
-    "version": "1.0.0",
-    "description": "API scraper para o AliExpress Monitor",
+    "version": "2.0.0",
+    "description": "Custom AliExpress scraper API with API interception + DOM fallback",
     "main": "index.js",
     "scripts": {
         "start": "node index.js"
     },
     "dependencies": {
-        "aliexpress-product-scraper": "^3.0.0",
         "express": "^4.19.2",
-        "cors": "^2.8.5"
+        "cors": "^2.8.5",
+        "puppeteer-extra": "^3.3.6",
+        "puppeteer-extra-plugin-stealth": "^2.11.2",
+        "puppeteer": "^23.0.0"
     },
     "engines": {
         "node": ">=20.0.0"

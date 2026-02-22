@@ -1,6 +1,6 @@
 FROM node:20-slim
 
-# Instala as dependências do Chromium para o Puppeteer funcionar
+# Install Chromium dependencies
 RUN apt-get update && apt-get install -y \
     chromium \
     fonts-ipafont-gothic \
@@ -8,11 +8,10 @@ RUN apt-get update && apt-get install -y \
     fonts-thai-tlwg \
     fonts-kacst \
     fonts-freefont-ttf \
-    libxss1 \
     --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-# Diz pro Puppeteer usar o Chromium do sistema em vez de baixar outro
+# Tell Puppeteer to use installed Chromium
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
@@ -23,6 +22,6 @@ RUN npm install --production
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 80
 
 CMD ["node", "index.js"]
