@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const scrape = require('aliexpress-product-scraper');
+const scrape = require('aliexpress-product-scraper').default || require('aliexpress-product-scraper');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -25,14 +25,14 @@ app.get('/api/scrape', async (req, res) => {
         console.log(`[Scraper] Iniciando raspagem para o produto: ${id}`);
         // O scraper do github pede só o ID do produto
         const data = await scrape(id);
-        
+
         console.log(`[Scraper] Sucesso para o produto: ${id}`);
         res.status(200).json(data);
     } catch (error) {
         console.error(`[Scraper] Erro ao raspar produto ${id}:`, error.message);
-        res.status(500).json({ 
-            error: 'Falha ao realizar o scraping do produto', 
-            details: error.message 
+        res.status(500).json({
+            error: 'Falha ao realizar o scraping do produto',
+            details: error.message
         });
     }
 });
