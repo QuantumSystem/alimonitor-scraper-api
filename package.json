@@ -1,0 +1,17 @@
+{
+  "name": "alimonitor-scraper-api",
+  "version": "1.0.0",
+  "description": "API scraper para o AliExpress Monitor",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "aliexpress-product-scraper": "^4.0.0",
+    "express": "^4.19.2",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}
