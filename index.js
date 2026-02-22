@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const scrape = require('aliexpress-product-scraper').default || require('aliexpress-product-scraper');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,6 +22,10 @@ app.get('/api/scrape', async (req, res) => {
 
     try {
         console.log(`[Scraper] Iniciando raspagem para o produto: ${id}`);
+        // Importação dinâmica para suportar ES Modules em CommonJS
+        const scraperModule = await import('aliexpress-product-scraper');
+        const scrape = scraperModule.default || scraperModule;
+        
         // O scraper do github pede só o ID do produto
         const data = await scrape(id);
 
