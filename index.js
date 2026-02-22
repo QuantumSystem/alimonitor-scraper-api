@@ -26,8 +26,13 @@ app.get('/api/scrape', async (req, res) => {
         const scraperModule = await import('aliexpress-product-scraper');
         const scrape = scraperModule.default || scraperModule;
         
-        // O scraper do github pede só o ID do produto
-        const data = await scrape(id);
+        // Passa --no-sandbox para o Chromium funcionar como root no Docker
+        const data = await scrape(id, {
+            puppeteerOptions: {
+                args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+                executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
+            }
+        });
 
         console.log(`[Scraper] Sucesso para o produto: ${id}`);
         res.status(200).json(data);
